@@ -84,11 +84,6 @@ class _FeedPageState extends State<FeedPage> {
             ),
             //posts
             Container(
-              width: double.infinity,
-              height: 1,
-              color: Colors.black,
-            ),
-            Container(
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
                 shrinkWrap: true,
@@ -208,32 +203,24 @@ class _FeedPageState extends State<FeedPage> {
         //comment
         Container(
           color: Colors.black,
-          width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
-                  RichText(
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    text: TextSpan(
-                        children: [
-                          TextSpan(
-                              text: 'Liked By ',
-                              style: TextStyle(color: Colors.grey)
-                          ),
-                        ]
-                    ),
-                  ),
                   Container(
-                    width: 200,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    width: MediaQuery.of(context).size.width-20,
                     child: RichText(
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
+                      softWrap: true,
                       text: TextSpan(
                           children: [
+                            TextSpan(
+                                text: 'Liked By ',
+                                style: TextStyle(color: Colors.grey)
+                            ),
                             TextSpan(
                                 text: 'Lisa, ',
                                 style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
@@ -254,28 +241,21 @@ class _FeedPageState extends State<FeedPage> {
                                 text: 'Jek, ',
                                 style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
                             ),
+
+                            TextSpan(
+                                text: 'and ',
+                                style: TextStyle(color: Colors.grey)
+                            ),
+                            TextSpan(
+                                text: '2134 ',
+                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
+                            ),
+                            TextSpan(
+                                text: 'others ',
+                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
+                            ),
                           ]
                       ),
-                    ),
-                  ),
-                  RichText(
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    text: TextSpan(
-                        children: [
-                          TextSpan(
-                              text: 'and ',
-                              style: TextStyle(color: Colors.grey)
-                          ),
-                          TextSpan(
-                              text: '2134 ',
-                              style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
-                          ),
-                          TextSpan(
-                              text: 'others ',
-                              style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
-                          ),
-                        ]
                     ),
                   ),
                 ],
