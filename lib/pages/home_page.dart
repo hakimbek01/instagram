@@ -12,35 +12,50 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   int _currentPage=0;
-  bool darkMode=false;
-  List<FeedPage> _pages=[
-    FeedPage(),
-    FeedPage(),
-    FeedPage(),
-    FeedPage(),
-    FeedPage(),
-  ];
+  bool darkMod=true;
+  List<FeedPage> _pages=[];
+
+  void a() {
+    _pages=[
+      FeedPage(darkMode: darkMod),
+      FeedPage(darkMode: darkMod,),
+      FeedPage(darkMode: darkMod,),
+      FeedPage(darkMode: darkMod,),
+      FeedPage(darkMode: darkMod,),
+    ];
+  }
+
+  @override
+  void initState() {
+    a();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.black,
-        title: Text('Instagram',style: TextStyle(color: Colors.grey),),
+        backgroundColor: darkMod? Colors.white:Colors.black,
+        title: Text('Instagram',style: TextStyle(color: darkMod? Colors.black:Colors.grey,),),
         centerTitle: true,
         leading: IconButton(
-          onPressed: (){},
-          icon: Icon(Icons.camera_alt_outlined,color: Colors.grey,),
+          onPressed: (){
+            setState(() {
+              darkMod=!darkMod;
+              a();
+            });
+          },
+          icon: Icon(Icons.camera_alt_outlined,color: darkMod? Colors.black:Colors.grey,),
         ),
         actions: [
           IconButton(
             onPressed: (){},
-            icon: Icon(Icons.live_tv,color: Colors.grey,),
+            icon: Icon(Icons.live_tv,color:darkMod? Colors.black:Colors.grey,),
           ),
           IconButton(
             onPressed: (){},
-            icon: Icon(Linecons.paper_plane,color: Colors.grey,),
+            icon: Icon(Linecons.paper_plane,color:darkMod? Colors.black:Colors.grey,),
           ),
         ],
       ),
@@ -51,10 +66,10 @@ class _HomePageState extends State<HomePage> {
             _currentPage=value;
           });
         },
-        backgroundColor: Colors.black,
+        backgroundColor: darkMod? Colors.white:Colors.black,
         currentIndex: _currentPage,
-        unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.white,
+        unselectedItemColor: darkMod? Colors.grey:Colors.grey,
+        selectedItemColor: darkMod? Colors.black:Colors.white,
         showUnselectedLabels: false,
         showSelectedLabels: false,
         type: BottomNavigationBarType.fixed,

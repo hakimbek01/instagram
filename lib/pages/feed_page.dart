@@ -5,7 +5,8 @@ import 'package:instagram/model/post_model.dart';
 import 'package:instagram/model/story_model.dart';
 
 class FeedPage extends StatefulWidget {
-  const FeedPage({Key? key}) : super(key: key);
+  final bool? darkMode;
+  const FeedPage({Key? key,this.darkMode}) : super(key: key);
 
   @override
   State<FeedPage> createState() => _FeedPageState();
@@ -60,7 +61,7 @@ class _FeedPageState extends State<FeedPage> {
           children: [
             //stories
             Container(
-              color: Colors.black,
+              color: (widget.darkMode!)? Colors.white:Colors.black,
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,7 +72,7 @@ class _FeedPageState extends State<FeedPage> {
               ),
             ),
             Container(
-              color: Colors.black,
+              color: (widget.darkMode!)? Colors.white:Colors.black,
               padding: EdgeInsets.symmetric(horizontal: 10),
               width: double.infinity,
               height: 130,
@@ -107,7 +108,7 @@ class _FeedPageState extends State<FeedPage> {
         Container(
           margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: (widget.darkMode!)? Colors.white:Colors.black,
             shape: BoxShape.circle,
             border: Border.all(color: Colors.purple,width: 3)
           ),
@@ -135,7 +136,7 @@ class _FeedPageState extends State<FeedPage> {
       children: [
         //avatar name popup button
         Container(
-          color: Colors.black,
+          color: (widget.darkMode!)? Colors.white:Colors.black,
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -153,7 +154,7 @@ class _FeedPageState extends State<FeedPage> {
               ),
               PopupMenuButton(
                 icon: Icon(Icons.keyboard_control_outlined,color: Colors.grey,),
-                color: Colors.grey.shade500,
+                color: (widget.darkMode!)?Colors.grey:Colors.grey.shade500,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
                 itemBuilder: (context) => [
                   PopupMenuItem(child: Text('Hello World'))
@@ -169,7 +170,7 @@ class _FeedPageState extends State<FeedPage> {
         ),
         //iconbuttons
         Container(
-          color: Colors.black,
+          color: (widget.darkMode!)? Colors.white:Colors.black,
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -179,30 +180,31 @@ class _FeedPageState extends State<FeedPage> {
                   IconButton(
                     onPressed: (){},
                     icon: Icon(Linecons.heart),
-                    color: Colors.grey,
+                    color: (widget.darkMode!)? Colors.black:Colors.grey,
                   ),
                   IconButton(
                     onPressed: (){},
                     icon: Icon(Linecons.comment),
-                    color: Colors.grey
+                    color: (widget.darkMode!)? Colors.black:Colors.grey,
                   ),
                   IconButton(
                     onPressed: (){},
                     icon: Icon(Linecons.paper_plane),
-                    color: Colors.grey,
+                    color: (widget.darkMode!)? Colors.black:Colors.grey,
                   ),
                 ],
               ),
               IconButton(
                 onPressed: (){},
                 icon: Icon(CupertinoIcons.bookmark,color: Colors.grey,),
+                color: (widget.darkMode!)? Colors.black:Colors.grey,
               )
             ],
           ),
         ),
         //comment
         Container(
-          color: Colors.black,
+          color: (widget.darkMode!)? Colors.white:Colors.black,
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -223,19 +225,19 @@ class _FeedPageState extends State<FeedPage> {
                             ),
                             TextSpan(
                                 text: 'Lisa, ',
-                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
+                                style: TextStyle(color: (widget.darkMode!)? Colors.black:Colors.white,fontWeight: FontWeight.bold)
                             ),
                             TextSpan(
                                 text: 'Kelvin, ',
-                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
+                                style: TextStyle(color: (widget.darkMode!)? Colors.black:Colors.white,fontWeight: FontWeight.bold)
                             ),
                             TextSpan(
                                 text: 'Davron, ',
-                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
+                                style: TextStyle(color:(widget.darkMode!)? Colors.black:Colors.white,fontWeight: FontWeight.bold)
                             ),
                             TextSpan(
                                 text: 'Uiliem, ',
-                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
+                                style: TextStyle(color:(widget.darkMode!)? Colors.black:Colors.white,fontWeight: FontWeight.bold)
                             ),
                             TextSpan(
                                 text: 'Jek, ',
@@ -248,11 +250,11 @@ class _FeedPageState extends State<FeedPage> {
                             ),
                             TextSpan(
                                 text: '2134 ',
-                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
+                                style: TextStyle(color: (widget.darkMode!)? Colors.black:Colors.white,fontWeight: FontWeight.bold)
                             ),
                             TextSpan(
                                 text: 'others ',
-                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
+                                style: TextStyle(color: (widget.darkMode!)? Colors.black:Colors.white,fontWeight: FontWeight.bold)
                             ),
                           ]
                       ),
@@ -268,7 +270,7 @@ class _FeedPageState extends State<FeedPage> {
                   children: [
                     TextSpan(
                       text: '${post.userName} ',
-                      style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
+                      style: TextStyle(color: (widget.darkMode!)? Colors.black:Colors.white,fontWeight: FontWeight.bold)
                     ),
                     TextSpan(
                       text: post.comment,
